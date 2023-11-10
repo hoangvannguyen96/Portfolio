@@ -55,9 +55,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li>
-            <a class="nav-link scrollto active" href="#hero">Trang chủ</a>
+            <a class="nav-link scrollto active" href="#hero" data-translation="Home Page">Trang chủ</a>
           </li>
-          <li><a class="nav-link scrollto" href="#about">Giới thiệu</a></li>
+          <li><a class="nav-link scrollto" href="#about" data-translation="Introduce">Giới thiệu</a></li>
           <li><a class="nav-link scrollto" href="#resume">Hồ sơ</a></li>
           <li><a class="nav-link scrollto" href="#services">Kỹ năng</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Sản phẩm</a></li>
@@ -79,6 +79,11 @@
           </ul>
         </li> -->
           <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+          <li class="language-toggle">
+            <a class="nav-link" href="#" id="toggleLanguage"
+              >Ngôn ngữ: Vietnamese</a
+            >
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
@@ -283,8 +288,8 @@
           </div>
           <div>
             <a
-              href="/assets/Cv-Hoàng Văn Nguyên.pdf"
-              download="Cv-Hoàng Văn Nguyên.pdf"
+              href="/assets/CV-Hoàng Văn Nguyên.pdf"
+              download="CV-Hoàng Văn Nguyên.pdf"
             >
               <button class="download-button btn btn-outline-primary">
                 Tải xuống CV
@@ -1291,5 +1296,32 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleButton = document.getElementById("toggleLanguage");
+        let isEnglish = false;
+        toggleButton.addEventListener("click", function () {
+          const languageText = isEnglish ? "English" : "Tiếng Việt";
+          toggleButton.textContent = `${languageText}`;
+          const elementsToTranslate =
+            document.querySelectorAll("[data-translation]");
+          elementsToTranslate.forEach((element) => {
+            const currentLanguage = element.textContent;
+            const newLanguage = element.dataset.translation;
+            element.textContent = newLanguage;
+            element.dataset.translation = currentLanguage;
+          });
+          isEnglish = !isEnglish;
+          // const projects = getProjects();
+          // projects.forEach((project) => {
+          //   project.title = project.titleVi;
+          //   project.projectName = project.projectNameVi;
+          //   project.description = project.descriptionVi;
+          // });
+          // updateProjectElements(projects);
+        });
+      });
+    </script>
   </body>
 </html>
